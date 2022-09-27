@@ -141,7 +141,7 @@ def convert(chartfile, isKichiku: bool=False, songBPM=150, special_values: list=
         else: print('The LCM is:', LCM)
         Tlcm = (60/songBPM)*4/LCM
         Sfree = math.ceil(Tmin/Tlcm)
-        print('Sfree is ', Sfree, 'samples')
+        print(f'Sfree is {Sfree} samples, and the BPM is {songBPM}')
 
         # Pad each line of the chart with zeroes depending on LCM. 
         # Extract lines that are BPM changes, and delete hidden samples
