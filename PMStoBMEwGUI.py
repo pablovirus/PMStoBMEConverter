@@ -1,6 +1,6 @@
 import tkinter as tk
 import tkinter.font as TkFont
-import PMStoBME
+import PMStoBME_withclass
 from tkinter import filedialog
 from functools import partial
 import logging
@@ -128,7 +128,7 @@ def convert():
                             six_chord.get(), seven_chord.get(), ]
     final_iskichiku = isKichiku.get()
     final_songname = songname_var.get()
-    convert_log = PMStoBME.convert(final_chartfile, final_iskichiku,
+    convert_log = PMStoBME_withclass.convert(final_chartfile, final_iskichiku,
                            final_BPM, final_special_values, final_songname)
     log_var.set(convert_log)
 
