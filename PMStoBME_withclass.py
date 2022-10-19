@@ -7,9 +7,6 @@ import sys
 import io
 from classtest import Channel
 from pathlib import Path
-from copy import deepcopy
-from DecoratorSnippets import verbose
-
 
 def lcm(denominators):
     '''Function to calculate Least Common multiple'''
@@ -181,9 +178,13 @@ def prioritize_MCs(potential_MCs : list, priority_list : list, ) -> list:
         move_to_first(potential_MCs, element) 
     return potential_MCs
 
-#  PMS CONVERSION FUNCTION
-def convert(chartfile, isKichiku: bool=False, songBPM=150, special_values: list=[100,100,100,100,100],
-            songname: str='default name'):
+#PMS CONVERSION FUNCTION
+def convert(
+        chartfile, 
+        isKichiku: bool=False, 
+        songBPM=150, 
+        special_values: list=[100,100,100,100,100],
+        songname: str='default name'):
     
     old_stdout = sys.stdout
     new_stdout = io.StringIO()

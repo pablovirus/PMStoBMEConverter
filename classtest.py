@@ -1,11 +1,5 @@
 class Channel:
 
-    name: str
-    length: int
-    channel: str
-    contents: list[str]
-    lcm : int
-
     def __init__(self, name, length, channel, lcm):
         self.name = name
         self.length = length
@@ -35,7 +29,11 @@ class Channel:
         '''Read samples in a given range'''
         return self.contents[start:end]
 
-    def count_non_null_samples(self, begin: int, end: int, null_sample: str = '00') -> int:
+    def count_non_null_samples(
+            self, 
+            begin: int, 
+            end: int, 
+            null_sample: str = '00') -> int:
         '''Count non-null samples within a given range. You can specify the null sample'''
         count = 0
         for element in self.contents[begin : end]:
@@ -46,7 +44,10 @@ class Channel:
     def convert_to_string(self) -> str:
         '''Convert contents of this channel to BMS format'''
         content_as_str = ''.join(self.contents)
-        divided = [(content_as_str[i:i+self.lcm*2]) for i in range(0, len(content_as_str), self.lcm*2)]
+        divided = [
+            (content_as_str[i:i+self.lcm*2]) 
+            for i in range(0, len(content_as_str), self.lcm*2)
+            ]
         output = ''
         for ind, measure in enumerate(divided):
             output = output + '#' + str(ind).zfill(3) + self.channel + ':' + measure + '\n'
